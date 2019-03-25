@@ -15,6 +15,7 @@ HOOKS = ['response']
 
 
 def default_hooks():
+    # 还能这样生成字典，有意思
     return {event: [] for event in HOOKS}
 
 # TODO: response is the only one

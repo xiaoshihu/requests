@@ -7,9 +7,13 @@ requests.structures
 Data structures that power Requests.
 """
 
+# 由于上一包已经将模块导入进来了，所以现在可以直接从上一包中导入，这里是为了解决兼容性的问题
+# 因为，有些包在不同的python版本中是有不同的名称的，所以，在另外一个文件里面处理这些问题
+# 然后，从另外一个文件里面单独的导入，就很好的解决了兼容性的问题，这里学到了。这种处理方式是真的好
+# 这些import进来的类就是字典一样，估计是在字典的基础上面再加一些特性
 from .compat import OrderedDict, Mapping, MutableMapping
 
-
+# 自己定义的数据结构，但是这样定义之后又有什么作用呢，目前还不知道是干什么用的
 class CaseInsensitiveDict(MutableMapping):
     """A case-insensitive ``dict``-like object.
 
@@ -81,6 +85,7 @@ class CaseInsensitiveDict(MutableMapping):
         return CaseInsensitiveDict(self._store.values())
 
     def __repr__(self):
+        # 原来str是可以直接将字典和list转化成字符串的。但是逆着来估计就不可以了
         return str(dict(self.items()))
 
 

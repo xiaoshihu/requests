@@ -53,6 +53,7 @@ def request(method, url, **kwargs):
       <Response [200]>
     """
 
+    # 上下文管理器能够实现io之类的接口自动关闭，但是前提是这个类实现了两个内建方法，有点像类的构造函数和析构函数一样
     # By using the 'with' statement we are sure the session is closed, thus we
     # avoid leaving sockets open which can trigger a ResourceWarning in some
     # cases, and look like a memory leak in others.

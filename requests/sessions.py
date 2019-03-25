@@ -336,7 +336,7 @@ class SessionRedirectMixin(object):
 
         prepared_request.method = method
 
-
+# 最主要的东西，就是一个会话
 class Session(SessionRedirectMixin):
     """A Requests session.
 
@@ -345,6 +345,7 @@ class Session(SessionRedirectMixin):
     Basic Usage::
 
       >>> import requests
+      # 因为在init文件里面import了session，所以，这里就能实现直接这样调用
       >>> s = requests.Session()
       >>> s.get('https://httpbin.org/get')
       <Response [200]>
@@ -367,6 +368,7 @@ class Session(SessionRedirectMixin):
         #: A case-insensitive dictionary of headers to be sent on each
         #: :class:`Request <Request>` sent from this
         #: :class:`Session <Session>`.
+        # 默认的请求头信息
         self.headers = default_headers()
 
         #: Default Authentication tuple or object to attach to
